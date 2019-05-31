@@ -51,6 +51,38 @@ RSpec.describe Puppet::Provider::PanosNatPolicy::PanosNatPolicy do
 
       it { expect(provider.munge(entry)).to eq(munged_entry) }
     end
+    context 'when :insert_after is nil' do
+      let(:entry) do
+        {
+          name: 'foo',
+          insert_after: nil,
+        }
+      end
+      let(:munged_entry) do
+        {
+          name: 'foo',
+          insert_after: '',
+        }
+      end
+
+      it { expect(provider.munge(entry)).to eq(munged_entry) }
+    end
+    context 'when :insert_after is NOT nil' do
+      let(:entry) do
+        {
+          name: 'foo',
+          insert_after: 'wibble',
+        }
+      end
+      let(:munged_entry) do
+        {
+          name: 'foo',
+          insert_after: 'wibble',
+        }
+      end
+
+      it { expect(provider.munge(entry)).to eq(munged_entry) }
+    end
   end
 
   describe 'validate_should(should)' do

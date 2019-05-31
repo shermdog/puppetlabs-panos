@@ -18,6 +18,9 @@ class Puppet::Provider::PanosSecurityPolicyRule::PanosSecurityPolicyRule < Puppe
         entry[attr] = string_to_bool(entry[attr])
       end
     end
+    if entry.key?(:insert_after) && entry[:insert_after].nil?
+      entry[:insert_after] = ''
+    end
     entry
   end
 
