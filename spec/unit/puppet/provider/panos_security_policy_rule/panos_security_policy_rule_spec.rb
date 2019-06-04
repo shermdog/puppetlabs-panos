@@ -3642,6 +3642,17 @@ RSpec.describe Puppet::Provider::PanosSecurityPolicyRule::PanosSecurityPolicyRul
         rule_type:  'universal',
       },
     },
+    {
+      desc: 'insert_after is nil.',
+      entry:  {
+        name:             'entry_at_top',
+        insert_after: nil,
+      },
+      munged_entry: {
+        name:             'entry_at_top',
+        insert_after: '',
+      },
+    },
   ]
 
   include_examples 'munge(entry)', test_data_for_munge, described_class.new
